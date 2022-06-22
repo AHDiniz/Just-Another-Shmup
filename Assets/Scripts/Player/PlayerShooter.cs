@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using JustAnotherShmup.Management;
 
 namespace JustAnotherShmup.Player
@@ -10,6 +11,7 @@ namespace JustAnotherShmup.Player
         [SerializeField] private float shootingCooldown = .2f;
         [SerializeField] private Transform bulletSpawnPoint;
         [SerializeField] private ObjectPool bulletPool;
+        [SerializeField] private UnityEvent OnShoot;
 
         private float timer = 0f;
 
@@ -22,6 +24,7 @@ namespace JustAnotherShmup.Player
                 GameObject bullet = bulletPool.GetPooledObject();
                 bullet.transform.position = bulletSpawnPoint.position;
                 bullet.SetActive(true);
+                OnShoot.Invoke();
             }
         }
     }
