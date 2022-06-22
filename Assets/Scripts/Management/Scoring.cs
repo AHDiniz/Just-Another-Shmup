@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using JustAnotherShmup.Management.Save;
 
 namespace JustAnotherShmup.Management
 {
@@ -27,8 +28,12 @@ namespace JustAnotherShmup.Management
 
         public void SaveHighScore()
         {
-            int currentHighScore = PlayerPrefs.GetInt("HighScore");
-            if (currentScore > currentHighScore) PlayerPrefs.SetInt("HighScore", currentScore);
+            int currentHighScore = SaveData.Instance.HighScore;
+            if (currentScore > currentHighScore)
+            {
+                SaveData.Instance.HighScore = currentScore;
+                SaveSystem.Save("s", SaveData.Instance);
+            }
         }
     }
 }
