@@ -11,6 +11,7 @@ namespace JustAnotherShmup.Player
         [SerializeField] private float shootingCooldown = .2f;
         [SerializeField] private Transform bulletSpawnPoint;
         [SerializeField] private ObjectPool bulletPool;
+        [SerializeField] private string shootButton = "Jump";
         [SerializeField] private UnityEvent OnShoot;
 
         private float timer = 0f;
@@ -18,7 +19,7 @@ namespace JustAnotherShmup.Player
         private void Update()
         {
             timer += Time.deltaTime;
-            if (timer >= shootingCooldown && Input.GetButton("Jump"))
+            if (timer >= shootingCooldown && Input.GetButton(shootButton))
             {
                 timer = 0f;
                 GameObject bullet = bulletPool.GetPooledObject();
