@@ -8,6 +8,6 @@ namespace JustAnotherShmup.Stats
     {
         [SerializeField] private int damage;
 
-        
+        public int Damage { get => damage; }
     }
 }

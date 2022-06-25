@@ -25,7 +25,8 @@ namespace JustAnotherShmup.Stats
         {
             if (col.gameObject.tag == hurtboxTag)
             {
-                --currentHP;
+                Damager d = col.gameObject.GetComponent<Damager>();
+                currentHP -= d.Damage;
                 OnHit.Invoke();
                 if (currentHP <= 0) OnNoHealth.Invoke();
             }
