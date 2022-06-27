@@ -8,6 +8,7 @@ TagManager:
   - Walls
   - Enemy
   - Bullet
+  - Missile Power Up
   layers:
   - Default
   - TransparentFX

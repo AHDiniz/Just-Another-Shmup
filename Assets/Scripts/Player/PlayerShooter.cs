@@ -14,6 +14,7 @@ namespace JustAnotherShmup.Player
         [SerializeField] private Transform bulletSpawnPoint;
         [SerializeField] private ObjectPool bulletPool;
         [SerializeField] private string shootButton = "Jump";
+        [SerializeField] private string reloadTag = "Missile Power Up";
         [SerializeField] private UnityEvent OnShoot;
 
         private float timer = 0f;
@@ -49,6 +50,14 @@ namespace JustAnotherShmup.Player
                 bullet.transform.position = bulletSpawnPoint.position;
                 bullet.SetActive(true);
                 OnShoot.Invoke();
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.gameObject.tag == reloadTag)
+            {
+                ResetAmmo();
             }
         }
     }
