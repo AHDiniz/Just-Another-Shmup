@@ -155,10 +155,10 @@ RectTransform:
   m_Father: {fileID: 362017391}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.85833335}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 257.67}
-  m_SizeDelta: {x: 0, y: -515.35}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0.17004395}
+  m_SizeDelta: {x: 0, y: -0.3499756}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &67022176
 MonoBehaviour:
@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5bde0b0be2e764a97f634811a64d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 45
+  spawnInterval: 25
   enemyTypePool: {fileID: 847626581}
   spawnPoints:
   - {fileID: 1911231987}
