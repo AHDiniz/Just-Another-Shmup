@@ -13,12 +13,13 @@ namespace JustAnotherShmup.Player
         [SerializeField] private float shootingCooldown = .2f;
         [SerializeField] private Transform bulletSpawnPoint;
         [SerializeField] private ObjectPool bulletPool;
-        [SerializeField] private string shootButton = "Jump";
+        [SerializeField] private bool missile = false;
         [SerializeField] private string reloadTag = "Missile Power Up";
         [SerializeField] private UnityEvent OnShoot;
 
         private float timer = 0f;
         private int currentAmmo;
+        private IPlayerInputs playerInputs;
 
         public int CurrentAmmo { get => currentAmmo; }
 
@@ -30,6 +31,11 @@ namespace JustAnotherShmup.Player
         private void Start()
         {
             ResetAmmo();
+            playerInputs = GetComponent<IPlayerInputs>();
+            if (playerInputs == null)
+            {
+                playerInputs = gameObject.AddComponent<HumanPlayerInputs>();
+            }
         }
 
         private void Update()
@@ -38,7 +44,8 @@ namespace JustAnotherShmup.Player
 
             bool canShoot = (!hasAmmoCount) || (hasAmmoCount && currentAmmo > 0);
 
-            if (canShoot && timer >= shootingCooldown && Input.GetButton(shootButton))
+            bool shoot = missile ? playerInputs.ShootMissile : playerInputs.ShootBullets;
+            if (canShoot && timer >= shootingCooldown && shoot)
             {
                 if (hasAmmoCount)
                 {

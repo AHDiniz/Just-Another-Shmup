@@ -11,17 +11,24 @@ namespace JustAnotherShmup.Player
 
         private Rigidbody2D rb2D;
         private Vector2 velocity = new Vector2();
+        private IPlayerInputs playerInputs;
 
         private void Start()
         {
             rb2D = GetComponent<Rigidbody2D>();
             rb2D.gravityScale = 0f;
+
+            playerInputs = GetComponent<IPlayerInputs>();
+            if (playerInputs == null)
+            {
+                playerInputs = gameObject.AddComponent<HumanPlayerInputs>();
+            }
         }
 
         private void Update()
         {
-            velocity.x = Input.GetAxis("Horizontal") * movementSpeed;
-            velocity.y = Input.GetAxis("Vertical") * movementSpeed;
+            velocity.x = playerInputs.Movement.x * movementSpeed;
+            velocity.y = playerInputs.Movement.y * movementSpeed;
         }
 
         private void FixedUpdate()

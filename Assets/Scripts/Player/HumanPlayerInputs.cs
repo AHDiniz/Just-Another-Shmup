@@ -17,7 +17,7 @@ namespace JustAnotherShmup.Player
             _movement.x = Input.GetAxis("Horizontal");
             _movement.y = Input.GetAxis("Vertical");
             _shootBullets = Input.GetButton("Jump");
-            
+            _shootMissile = Input.GetButtonDown("Fire2");
         }
     }
 }
