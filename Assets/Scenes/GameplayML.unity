@@ -1421,6 +1421,7 @@ GameObject:
   - component: {fileID: 453982848}
   - component: {fileID: 453982847}
   - component: {fileID: 453982846}
+  - component: {fileID: 453982860}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1443,7 +1444,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 2
+  MaxStep: 1000
 --- !u!114 &453982847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1593,7 +1594,7 @@ MonoBehaviour:
   shootingCooldown: 1
   bulletSpawnPoint: {fileID: 1226056396}
   bulletPool: {fileID: 453982852}
-  missile: 0
+  missile: 1
   reloadTag: Missile Power Up
   OnShoot:
     m_PersistentCalls:
@@ -1626,8 +1627,8 @@ MonoBehaviour:
   maxAmmo: 5
   shootingCooldown: 0.1
   bulletSpawnPoint: {fileID: 1226056396}
-  bulletPool: {fileID: 453982852}
-  missile: 1
+  bulletPool: {fileID: 453982853}
+  missile: 0
   reloadTag: Missile Power Up
   OnShoot:
     m_PersistentCalls:
@@ -1894,6 +1895,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &453982860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453982845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 20
+  TakeActionsBetweenDecisions: 1
 --- !u!1 &494404129
 GameObject:
   m_ObjectHideFlags: 0

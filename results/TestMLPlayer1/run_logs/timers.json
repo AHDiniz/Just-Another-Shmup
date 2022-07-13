@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1657732805",
+        "python_version": "3.7.3 (default, Apr  9 2019, 04:56:51) \n[GCC 8.3.0]",
+        "command_line_arguments": "/home/alanhdiniz/.local/bin/mlagents-learn --run-id TestMLPlayer1 --force",
+        "mlagents_version": "0.28.0",
+        "mlagents_envs_version": "0.28.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+rocm3.8",
+        "numpy_version": "1.21.6",
+        "end_time_seconds": "1657732881"
+    },
+    "total": 76.15220434799994,
+    "count": 1,
+    "self": 0.007313103997148573,
+    "children": {
+        "run_training.setup": {
+            "total": 0.021853423000720795,
+            "count": 1,
+            "self": 0.021853423000720795
+        },
+        "TrainerController.start_learning": {
+            "total": 76.12303782100207,
+            "count": 1,
+            "self": 8.273000275949016e-05,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 76.12292760900164,
+                    "count": 1,
+                    "self": 76.12292760900164
+                },
+                "TrainerController._save_models": {
+                    "total": 2.7481997676659375e-05,
+                    "count": 1,
+                    "self": 2.7481997676659375e-05
+                }
+            }
+        }
+    }
+}

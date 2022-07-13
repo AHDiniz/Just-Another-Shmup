@@ -12,6 +12,8 @@ namespace JustAnotherShmup.UserInterface
         [SerializeField] private TextMeshProUGUI hpText;
         [SerializeField] private string baseText = "Missiles: ";
 
+        public int CurrentAmmo { get => missile.CurrentAmmo; }
+
         private void Update()
         {
             hpText.text = baseText + missile.CurrentAmmo;
