@@ -5,15 +5,18 @@ using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using JustAnotherShmup.Player;
 using JustAnotherShmup.Stats;
+using JustAnotherShmup.Management;
 
 namespace JustAnotherShmup.MachineLearning
 {
     public class TestPlayerAgent : Agent, IPlayerInputs
     {
+        private int _score, _prevScore;
         private Vector2 _movement;
         private bool _shootBullets;
         private bool _shootMissile;
         private HealthPoints _hp;
+        private Scoring _scoring;
 
         Vector2 IPlayerInputs.Movement { get => _movement; }
         bool IPlayerInputs.ShootBullets { get => _shootBullets; }
@@ -36,7 +39,7 @@ namespace JustAnotherShmup.MachineLearning
 
         public override void OnEpisodeBegin()
         {
-            _hp = GetComponent<HealthPoints>();
+            
         }
 
         public override void OnActionReceived(float[] vectorActions)
@@ -52,12 +55,22 @@ namespace JustAnotherShmup.MachineLearning
             
         }
 
+        public void OnDeath()
+        {
+            EndEpisode();
+        }
+
+        private void Start()
+        {
+            _hp = GetComponent<HealthPoints>();
+
+            GameObject gameController = GameObject.FindWithTag("GameController");
+            _scoring = gameController.GetComponent<Scoring>();
+        }
+
         private void Update()
         {
-            if (_hp.CurrentHP <= 0)
-            {
-                EndEpisode();
-            }
+            
         }
     }
 }
