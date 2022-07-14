@@ -2,7 +2,7 @@
     "name": "root",
     "metadata": {
         "timer_format_version": "0.1.0",
-        "start_time_seconds": "1657733884",
+        "start_time_seconds": "1657760982",
         "python_version": "3.7.3 (default, Apr  9 2019, 04:56:51) \n[GCC 8.3.0]",
         "command_line_arguments": "/home/alanhdiniz/.local/bin/mlagents-learn --run-id TestPlayerAgent --force",
         "mlagents_version": "0.28.0",
@@ -10,31 +10,31 @@
         "communication_protocol_version": "1.5.0",
         "pytorch_version": "1.7.1+rocm3.8",
         "numpy_version": "1.21.6",
-        "end_time_seconds": "1657733953"
+        "end_time_seconds": "1657761052"
     },
-    "total": 68.05171773099937,
+    "total": 69.4879191529999,
     "count": 1,
-    "self": 0.005470533000334399,
+    "self": 0.051229207999313076,
     "children": {
         "run_training.setup": {
-            "total": 0.5965871730004437,
+            "total": 1.4047883230005027,
             "count": 1,
-            "self": 0.5965871730004437
+            "self": 1.4047883230005027
         },
         "TrainerController.start_learning": {
-            "total": 67.4496600249986,
+            "total": 68.03190162200008,
             "count": 1,
-            "self": 8.439299926976673e-05,
+            "self": 0.00017893199947138783,
             "children": {
                 "TrainerController._reset_env": {
-                    "total": 67.4495544570018,
+                    "total": 68.03169514000001,
                     "count": 1,
-                    "self": 67.4495544570018
+                    "self": 68.03169514000001
                 },
                 "TrainerController._save_models": {
-                    "total": 2.1174997527850792e-05,
+                    "total": 2.7550000595510937e-05,
                     "count": 1,
-                    "self": 2.1174997527850792e-05
+                    "self": 2.7550000595510937e-05
                 }
             }
         }

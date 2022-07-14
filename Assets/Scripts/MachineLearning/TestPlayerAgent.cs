@@ -56,8 +56,8 @@ namespace JustAnotherShmup.MachineLearning
         {
             _movement.x = vectorActions[0];
             _movement.y = vectorActions[1];
-            _shootBullets = Mathf.Abs(vectorActions[2]) >= Mathf.Abs(vectorActions[3]);
-            _shootMissile = Mathf.Abs(vectorActions[4]) >= Mathf.Abs(vectorActions[5]);
+            _shootBullets = Mathf.Abs(vectorActions[2]) >= 0.0f;
+            _shootMissile = Mathf.Abs(vectorActions[3]) >= 0.0f;
         }
 
         public override void CollectObservations(VectorSensor sensor)
