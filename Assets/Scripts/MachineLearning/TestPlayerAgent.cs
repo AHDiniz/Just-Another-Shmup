@@ -26,27 +26,6 @@ namespace JustAnotherShmup.MachineLearning
         bool IPlayerInputs.ShootBullets { get => _shootBullets; }
         bool IPlayerInputs.ShootMissile { get => _shootMissile; }
 
-        /**
-        Observations needed:
-            - Enemies on screen
-            - Health points
-            - Missile ammo count
-        */
-
-        /**
-        Rewards:
-            - Add reward on score increase
-            - Subtract reward on health point loss
-        */
-
-        // End episode on hp == 0
-
-        /**
-        To do:
-            - Make the movement work
-            - Make so that the can reset without reloading the scene
-        */
-
         public override void OnEpisodeBegin()
         {
             
