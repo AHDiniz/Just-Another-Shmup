@@ -18,6 +18,11 @@ namespace JustAnotherShmup.MachineLearning
         bool IPlayerInputs.ShootBullets { get => _shootBullets; }
         bool IPlayerInputs.ShootMissile { get => _shootMissile; }
 
+        public override void OnEpisodeBegin()
+        {
+            
+        }
+
         public override void OnActionReceived(float[] vectorActions)
         {
             
