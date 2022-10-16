@@ -12,6 +12,7 @@ namespace JustAnotherShmup.MachineLearning
 {
     public class PlayerAgent : Agent, IPlayerInputs
     {
+        private int _prevHP, _prevScore;
         private Vector2 _movement;
         private bool _shootBullets;
         private bool _shootMissile;
@@ -42,7 +43,19 @@ namespace JustAnotherShmup.MachineLearning
 
         public override void OnActionReceived(float[] vectorActions)
         {
-            
+            _movement.x = vectorActions[0];
+            _movement.y = vectorActions[1];
+            _shootBullets = Mathf.Abs(vectorActions[2]) > .01f;
+            _shootMissile = Mathf.Abs(vectorActions[3]) > .01f;
+        }
+
+        private void Update()
+        {
+            AddReward((_hp.CurrentHP - _prevHP) * 10f);
+            AddReward(_score.CurrentScore - _prevScore);
+
+            _prevHP = _hp.CurrentHP;
+            _prevScore = _score.CurrentScore;
         }
     }
 }
