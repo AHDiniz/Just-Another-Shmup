@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using JustAnotherShmup.Player;
@@ -12,6 +13,8 @@ namespace JustAnotherShmup.MachineLearning
 {
     public class PlayerAgent : Agent, IPlayerInputs
     {
+        [SerializeField] private UnityEvent _OnEpisodeEnd;
+
         private int _prevHP, _prevScore;
         private Vector2 _movement;
         private bool _shootBullets;
@@ -20,6 +23,7 @@ namespace JustAnotherShmup.MachineLearning
         private HealthPoints _hp;
         private MissileCountDisplay _missileCount;
         private Scoring _score;
+        private LevelReset _reset;
 
         Vector2 IPlayerInputs.Movement { get => _movement; }
         bool IPlayerInputs.ShootBullets { get => _shootBullets; }
@@ -32,6 +36,7 @@ namespace JustAnotherShmup.MachineLearning
             GameObject gameController = GameObject.FindWithTag("GameController");
             _missileCount = gameController.GetComponent<MissileCountDisplay>();
             _score = gameController.GetComponent<Scoring>();
+            _reset = gameController.GetComponent<LevelReset>();
         }
 
         public override void CollectObservations(VectorSensor sensor)
@@ -47,6 +52,11 @@ namespace JustAnotherShmup.MachineLearning
             _movement.y = vectorActions[1];
             _shootBullets = Mathf.Abs(vectorActions[2]) > .01f;
             _shootMissile = Mathf.Abs(vectorActions[3]) > .01f;
+        }
+
+        public void OnDeath()
+        {
+            _reset.Reset();
         }
 
         private void Update()
