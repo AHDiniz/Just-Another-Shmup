@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MachineLearning
+namespace JustAnotherShmup.MachineLearning
 {
     public class LevelReset : MonoBehaviour
     {

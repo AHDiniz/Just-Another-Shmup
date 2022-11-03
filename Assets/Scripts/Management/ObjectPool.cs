@@ -9,7 +9,7 @@ namespace JustAnotherShmup.Management
         [SerializeField] private GameObject prefab;
         [SerializeField] private Transform parent;
         [SerializeField] private int amountToPool;
-
+    
         private List<GameObject> pooled = new List<GameObject>();
 
         private void Start()

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
 using JustAnotherShmup.Player;
 using JustAnotherShmup.Stats;
 using JustAnotherShmup.Management;
@@ -46,12 +47,12 @@ namespace JustAnotherShmup.MachineLearning
             sensor.AddObservation(_missileCount.CurrentAmmo);
         }
 
-        public override void OnActionReceived(float[] vectorActions)
+        public override void OnActionReceived(ActionBuffers actions)
         {
-            _movement.x = vectorActions[0];
-            _movement.y = vectorActions[1];
-            _shootBullets = Mathf.Abs(vectorActions[2]) > .01f;
-            _shootMissile = Mathf.Abs(vectorActions[3]) > .01f;
+            _movement.x = actions.ContinuousActions.Array[0];
+            _movement.y = actions.ContinuousActions.Array[1];
+            _shootBullets = Mathf.Abs(actions.ContinuousActions.Array[2]) < .9f;
+            _shootMissile = Mathf.Abs(actions.ContinuousActions.Array[3]) < .5f;
         }
 
         public void OnDeath()
@@ -62,7 +63,7 @@ namespace JustAnotherShmup.MachineLearning
         private void Update()
         {
             AddReward((_hp.CurrentHP - _prevHP) * 10f);
-            AddReward(_score.CurrentScore - _prevScore);
+            AddReward(_score.CurrentScore - _prevScore * 10f);
 
             _prevHP = _hp.CurrentHP;
             _prevScore = _score.CurrentScore;
