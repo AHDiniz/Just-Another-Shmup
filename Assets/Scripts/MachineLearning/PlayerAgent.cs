@@ -17,6 +17,7 @@ namespace JustAnotherShmup.MachineLearning
         [SerializeField] private UnityEvent _OnEpisodeEnd;
 
         private int _prevHP, _prevScore;
+        private int _currentHP, _currentScore;
         private Vector2 _movement;
         private bool _shootBullets;
         private bool _shootMissile;
@@ -62,11 +63,22 @@ namespace JustAnotherShmup.MachineLearning
 
         private void Update()
         {
-            AddReward((_hp.CurrentHP - _prevHP) * 10f);
-            AddReward(_score.CurrentScore - _prevScore * 10f);
+            if (StepCount >= MaxStep)
+                EndEpisode();
 
-            _prevHP = _hp.CurrentHP;
-            _prevScore = _score.CurrentScore;
+            _currentHP = _hp.CurrentHP;
+
+            if (_currentHP <= 0)
+                AddReward(-50f);
+
+            _currentScore = _score.CurrentScore;
+
+            AddReward(_currentScore - _prevScore);
+            if (_currentHP < _prevHP)
+                AddReward(-_currentHP * 10f);
+
+            _prevScore = _currentScore;
+            _prevHP = _currentHP;
         }
     }
 }

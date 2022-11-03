@@ -2,22 +2,22 @@
     "TestPlayerAgent": {
         "checkpoints": [
             {
-                "steps": 38781,
-                "file_path": "results\\PlayerAgentTest\\TestPlayerAgent\\TestPlayerAgent-38781.onnx",
-                "reward": -20.76502732240437,
-                "creation_time": 1667438255.7471735,
+                "steps": 5215,
+                "file_path": "results\\PlayerAgentTest\\TestPlayerAgent\\TestPlayerAgent-5215.onnx",
+                "reward": -21.991525423728813,
+                "creation_time": 1667498370.5832367,
                 "auxillary_file_paths": [
-                    "results\\PlayerAgentTest\\TestPlayerAgent\\TestPlayerAgent-38781.pt"
+                    "results\\PlayerAgentTest\\TestPlayerAgent\\TestPlayerAgent-5215.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 38781,
+            "steps": 5215,
             "file_path": "results\\PlayerAgentTest\\TestPlayerAgent.onnx",
-            "reward": -20.76502732240437,
-            "creation_time": 1667438255.7471735,
+            "reward": -21.991525423728813,
+            "creation_time": 1667498370.5832367,
             "auxillary_file_paths": [
-                "results\\PlayerAgentTest\\TestPlayerAgent\\TestPlayerAgent-38781.pt"
+                "results\\PlayerAgentTest\\TestPlayerAgent\\TestPlayerAgent-5215.pt"
             ]
         }
     },
