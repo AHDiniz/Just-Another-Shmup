@@ -52,8 +52,8 @@ namespace JustAnotherShmup.MachineLearning
         {
             _movement.x = actions.ContinuousActions.Array[0];
             _movement.y = actions.ContinuousActions.Array[1];
-            _shootBullets = Mathf.Abs(actions.ContinuousActions.Array[2]) < .9f;
-            _shootMissile = Mathf.Abs(actions.ContinuousActions.Array[3]) < .5f;
+            _shootBullets = actions.ContinuousActions.Array[2] >= 0f;
+            _shootMissile = actions.ContinuousActions.Array[3] >= 0f;
         }
 
         public void OnDeath()
