@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
@@ -58,7 +59,8 @@ namespace JustAnotherShmup.MachineLearning
 
         public void OnDeath()
         {
-            _reset.Reset();
+            // _reset.Reset();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         private void Update()

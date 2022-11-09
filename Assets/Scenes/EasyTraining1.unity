@@ -507,10 +507,9 @@ GameObject:
   - component: {fileID: 278984308}
   - component: {fileID: 278984307}
   - component: {fileID: 278984306}
-  - component: {fileID: 278984305}
+  - component: {fileID: 278984319}
   - component: {fileID: 278984304}
   - component: {fileID: 278984303}
-  - component: {fileID: 278984319}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -560,22 +559,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecisionPeriod: 20
   TakeActionsBetweenDecisions: 1
---- !u!114 &278984305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278984302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610a45902f91cebc2a490e5f66ec2a7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 1000
 --- !u!114 &278984306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -841,9 +824,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 278984305}
-        m_TargetAssemblyTypeName: JustAnotherShmup.MachineLearning.TestPlayerAgent,
-          Assembly-CSharp
+      - m_Target: {fileID: 278984319}
+        m_TargetAssemblyTypeName: JustAnotherShmup.MachineLearning.PlayerAgent, Assembly-CSharp
         m_MethodName: OnDeath
         m_Mode: 1
         m_Arguments:
@@ -1020,13 +1002,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 278984302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Script: {fileID: 11500000, guid: cf44893d42552e348858c30819e73821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 1000
+  _OnEpisodeEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &310216588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,7 +1253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &495363655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4411,6 +4396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   easyModeDuration: 60
   easyModeSpawners:
+  - {fileID: 495363654}
+  - {fileID: 2065440967}
   - {fileID: 1959055962}
   mediumModeDuration: 240
   mediumModeSpawners: []
@@ -5257,7 +5244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2065440968
 MonoBehaviour:
   m_ObjectHideFlags: 0
