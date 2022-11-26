@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1668131067",
+        "python_version": "3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)]",
+        "command_line_arguments": "D:\\Alan\\Arquivos de Programas\\Python310\\Scripts\\mlagents-learn --force --run-id=EasyPlayer",
+        "mlagents_version": "0.28.0",
+        "mlagents_envs_version": "0.28.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.12.1+cpu",
+        "numpy_version": "1.23.3",
+        "end_time_seconds": "1668131139"
+    },
+    "total": 71.36730149999494,
+    "count": 1,
+    "self": 0.16700180000043474,
+    "children": {
+        "run_training.setup": {
+            "total": 0.2041767000046093,
+            "count": 1,
+            "self": 0.2041767000046093
+        },
+        "TrainerController.start_learning": {
+            "total": 70.9961229999899,
+            "count": 1,
+            "self": 0.00015699997311457992,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 70.99594170000637,
+                    "count": 1,
+                    "self": 70.99594170000637
+                },
+                "TrainerController._save_models": {
+                    "total": 2.4300010409206152e-05,
+                    "count": 1,
+                    "self": 2.4300010409206152e-05
+                }
+            }
+        }
+    }
+}

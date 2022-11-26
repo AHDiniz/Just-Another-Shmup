@@ -16,6 +16,8 @@ namespace JustAnotherShmup.MachineLearning
     public class PlayerAgent : Agent, IPlayerInputs
     {
         [SerializeField] private UnityEvent _OnEpisodeEnd;
+        [SerializeField] private int _minutesToPlayScenario = 10;
+        [SerializeField] private bool _training = true;
 
         private int _prevHP, _prevScore;
         private int _currentHP, _currentScore;
@@ -27,12 +29,14 @@ namespace JustAnotherShmup.MachineLearning
         private MissileCountDisplay _missileCount;
         private Scoring _score;
         private LevelReset _reset;
+        private ScenarioManager _scenario;
+        private TrainingTimer _timer;
 
         Vector2 IPlayerInputs.Movement { get => _movement; }
         bool IPlayerInputs.ShootBullets { get => _shootBullets; }
         bool IPlayerInputs.ShootMissile { get => _shootMissile; }
 
-        public override void OnEpisodeBegin()
+        private void Start()
         {
             _hp = GetComponent<HealthPoints>();
 
@@ -40,13 +44,18 @@ namespace JustAnotherShmup.MachineLearning
             _missileCount = gameController.GetComponent<MissileCountDisplay>();
             _score = gameController.GetComponent<Scoring>();
             _reset = gameController.GetComponent<LevelReset>();
+
+            _scenario = ScenarioManager.Instance;
+            _timer = TrainingTimer.Instance;
         }
 
         public override void CollectObservations(VectorSensor sensor)
         {
             sensor.AddObservation(transform.position);
-            sensor.AddObservation(_hp.CurrentHP);
-            sensor.AddObservation(_missileCount.CurrentAmmo);
+            if (_hp != null)
+                sensor.AddObservation(_hp.CurrentHP);
+            if (_missileCount != null)
+                sensor.AddObservation(_missileCount.CurrentAmmo);
         }
 
         public override void OnActionReceived(ActionBuffers actions)
@@ -59,15 +68,33 @@ namespace JustAnotherShmup.MachineLearning
 
         public void OnDeath()
         {
-            // _reset.Reset();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (_scenario != null)
+                _scenario.ReloadCurrentScene();
+            else
+                Debug.Log("Deu errado");
         }
 
         private void Update()
         {
-            if (StepCount >= MaxStep)
-                EndEpisode();
-
+            if (_training && _timer != null)
+            {
+                if (_timer.TimeCount >= _minutesToPlayScenario * 60f)
+                {
+                    _timer.Reset();
+                    if (_scenario != null)
+                    {
+                        if (!_scenario.LoadNextScene())
+                        {
+                            EndEpisode();
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Deu errado!");
+                    }
+                }
+            }
+            
             _currentHP = _hp.CurrentHP;
 
             if (_currentHP <= 0)

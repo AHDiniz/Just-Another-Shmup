@@ -14,4 +14,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EasyTraining1.unity
     guid: e3091c0da5ac4424bb9e95447882aa4c
+  - enabled: 1
+    path: Assets/Scenes/EasyTraining2.unity
+    guid: 89795d6b3ea092c46ba99cf5f225ce93
+  - enabled: 1
+    path: Assets/Scenes/EasyTraining3.unity
+    guid: 95365acdf3b21ba408068a37aa058b95
+  - enabled: 1
+    path: Assets/Scenes/EasyTraining4.unity
+    guid: 1f78ea1b1440d9f4f8bf74def293d1df
+  - enabled: 1
+    path: Assets/Scenes/MediumTraining1.unity
+    guid: 52204852deafc3d49a832a987d903e6b
+  - enabled: 1
+    path: Assets/Scenes/MediumTraining2.unity
+    guid: 8a4e0e7a625d2ba43868d7f6d72b1c83
+  - enabled: 1
+    path: Assets/Scenes/MediumTraining3.unity
+    guid: c16460aa10be1794eb74b79fb54ef934
+  - enabled: 1
+    path: Assets/Scenes/MediumTraining4.unity
+    guid: 759f6524881a1b9488e86e50a98cea3a
   m_configObjects: {}
